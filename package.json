@@ -16,6 +16,7 @@
     "bin/",
     "plugins/viewpoint-compiler/",
     "README.md",
+    "README.en.md",
     "LICENSE"
   ],
   "engines": {

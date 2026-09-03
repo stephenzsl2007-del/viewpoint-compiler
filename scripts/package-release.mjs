@@ -20,6 +20,7 @@ await cp(sourcePlugin, releasePlugin, {
 await mkdir(path.join(stage, "bin"), { recursive: true });
 await cp(path.join(root, "bin", "viewpoint-compiler.mjs"), path.join(stage, "bin", "viewpoint-compiler.mjs"));
 await cp(path.join(root, "README.md"), path.join(stage, "README.md"));
+await cp(path.join(root, "README.en.md"), path.join(stage, "README.en.md"));
 await cp(path.join(root, "LICENSE"), path.join(stage, "LICENSE"));
 
 await writeFile(path.join(stage, "install.cmd"), [

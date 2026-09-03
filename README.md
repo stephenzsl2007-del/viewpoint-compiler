@@ -1,5 +1,7 @@
 # Viewpoint Compiler
 
+[简体中文](README.md) | [English](README.en.md)
+
 把自然语言观点编译成可检查、可修改、可播放的推理图和离线 HTML 动画。
 
 Viewpoint Compiler 是一个面向 Codex 与其他 coding agent 的本地插件。宿主 Agent 负责语义理解，Skill 规定解析流程，本地 MCP Server 负责 Schema 校验、结构优化、布局、保存和确定性动画渲染。它不调用 OpenAI API，也不要求用户配置 API Key。
