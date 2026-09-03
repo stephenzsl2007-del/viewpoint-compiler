@@ -2,11 +2,31 @@
   "name": "viewpoint-compiler-workspace",
   "version": "0.1.0",
   "private": true,
+  "description": "Install and develop the Viewpoint Compiler plugin for Codex and MCP-compatible agents.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenzsl2007-del/viewpoint-compiler.git"
+  },
+  "homepage": "https://github.com/stephenzsl2007-del/viewpoint-compiler#readme",
+  "bin": {
+    "viewpoint-compiler": "./bin/viewpoint-compiler.mjs"
+  },
+  "files": [
+    "bin/",
+    "plugins/viewpoint-compiler/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "workspaces": ["plugins/*"],
   "scripts": {
     "build": "npm run build --workspace viewpoint-compiler",
-    "test": "npm run test --workspace viewpoint-compiler",
+    "package:release": "npm run build && node scripts/package-release.mjs",
+    "test": "npm run test --workspace viewpoint-compiler && npm run test:installer",
+    "test:installer": "node --test tests/installer.test.mjs",
     "typecheck": "npm run typecheck --workspace viewpoint-compiler"
   }
 }
-

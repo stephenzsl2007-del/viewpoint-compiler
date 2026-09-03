@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run package:release -- "$GITHUB_REF_NAME"
+      - name: Create archives
+        run: |
+          cd release
+          archive="viewpoint-compiler-${GITHUB_REF_NAME}"
+          zip -qr "${archive}.zip" "$archive"
+          tar -czf "${archive}.tar.gz" "$archive"
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" release/*.zip release/*.tar.gz --generate-notes --verify-tag

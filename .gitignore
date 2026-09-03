@@ -4,3 +4,4 @@ coverage/
 .viewpoint-compiler/
 *.log
 .plugin-dev-deps/
+release/

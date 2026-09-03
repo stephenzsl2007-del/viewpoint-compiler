@@ -2,10 +2,12 @@
   "name": "viewpoint-compiler",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "engines": { "node": ">=20" },
   "scripts": {
-    "build": "tsc -p tsconfig.server.json && npm run build:ui",
+    "build": "node scripts/clean.mjs && npm run build:server && npm run build:ui",
+    "build:server": "node scripts/build-server.mjs",
     "build:ui": "vite build --configLoader runner",
     "test": "npm run build && vitest run --config vitest.config.ts --configLoader runner",
     "typecheck": "tsc --noEmit"
@@ -24,6 +26,7 @@
     "@types/react-dom": "^19.1.9",
     "@testing-library/react": "^16.3.0",
     "@vitejs/plugin-react": "^5.0.2",
+    "esbuild": "^0.27.7",
     "jsdom": "^26.1.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.4",
