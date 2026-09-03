@@ -1,0 +1,20 @@
+{
+  "name": "viewpoint-compiler-local",
+  "interface": {
+    "displayName": "Viewpoint Compiler Local"
+  },
+  "plugins": [
+    {
+      "name": "viewpoint-compiler",
+      "source": {
+        "source": "local",
+        "path": "./plugins/viewpoint-compiler"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

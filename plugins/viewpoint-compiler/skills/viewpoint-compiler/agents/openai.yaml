@@ -1,0 +1,4 @@
+interface:
+  display_name: "Viewpoint Compiler"
+  short_description: "Compile viewpoints into reasoning animations"
+  default_prompt: "把这段观点编译成可编辑的推理动画。"

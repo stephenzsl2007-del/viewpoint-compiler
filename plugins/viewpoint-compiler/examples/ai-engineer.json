@@ -1,0 +1,37 @@
+{
+  "version": "0.1",
+  "title": "AI 改变工程师角色，而非消灭工程师",
+  "language": "zh-CN",
+  "sourceText": "AI 正在降低编程门槛，因此未来独立开发者会增加。但复杂软件仍然需要大量工程经验，所以我认为 AI 不会消灭软件工程师，而是改变工程师的角色。",
+  "semanticObjects": [
+    { "id": "o_ai", "type": "Entity", "label": "AI" },
+    { "id": "o_barrier", "type": "State", "label": "编程门槛" },
+    { "id": "o_indie", "type": "Entity", "label": "独立开发者" },
+    { "id": "o_software", "type": "Entity", "label": "复杂软件" },
+    { "id": "o_experience", "type": "Property", "label": "工程经验" },
+    { "id": "o_engineer", "type": "Entity", "label": "软件工程师" },
+    { "id": "o_role", "type": "Property", "label": "工程师角色" }
+  ],
+  "propositions": [
+    { "id": "p_ai_capability", "label": "AI 能力持续提高", "predicate": "Increase", "arguments": [{ "role": "subject", "objectId": "o_ai" }], "modifiers": { "polarity": "positive", "modality": "certain", "time": { "kind": "present" } }, "intent": "ASSERT", "metadata": { "importance": 0.75, "confidence": 0.9, "presentationPriority": 0.75, "sectionId": "s_mechanism" } },
+    { "id": "p_barrier_down", "label": "编程门槛下降", "predicate": "Decrease", "arguments": [{ "role": "subject", "objectId": "o_barrier" }], "modifiers": { "polarity": "positive", "modality": "certain", "time": { "kind": "present" } }, "intent": "ASSERT", "metadata": { "importance": 0.85, "confidence": 0.9, "presentationPriority": 0.85, "sectionId": "s_mechanism" } },
+    { "id": "p_indie_up", "label": "独立开发者可能增加", "predicate": "Increase", "arguments": [{ "role": "subject", "objectId": "o_indie" }], "modifiers": { "polarity": "positive", "modality": "probable", "time": { "kind": "future" } }, "intent": "PREDICT", "metadata": { "importance": 0.75, "confidence": 0.8, "presentationPriority": 0.75, "sectionId": "s_mechanism" } },
+    { "id": "p_complex_requires", "label": "复杂软件仍需大量工程经验", "predicate": "Require", "arguments": [{ "role": "subject", "objectId": "o_software" }, { "role": "requirement", "objectId": "o_experience" }], "modifiers": { "polarity": "positive", "modality": "necessary", "time": { "kind": "present" } }, "intent": "EMPHASIZE", "metadata": { "importance": 0.9, "confidence": 0.9, "presentationPriority": 0.9, "sectionId": "s_constraint" } },
+    { "id": "p_engineers_disappear", "label": "AI 会消灭软件工程师", "predicate": "Eliminate", "arguments": [{ "role": "agent", "objectId": "o_ai" }, { "role": "patient", "objectId": "o_engineer" }], "modifiers": { "polarity": "negative", "modality": "probable", "time": { "kind": "future" }, "quantification": { "kind": "all" } }, "intent": "PREDICT", "metadata": { "importance": 0.85, "confidence": 0.85, "presentationPriority": 0.8, "sectionId": "s_constraint" } },
+    { "id": "p_role_changes", "label": "AI 将改变工程师的角色", "predicate": "Change", "arguments": [{ "role": "agent", "objectId": "o_ai" }, { "role": "patient", "objectId": "o_role" }], "modifiers": { "polarity": "positive", "modality": "probable", "time": { "kind": "future" } }, "intent": "PREDICT", "metadata": { "importance": 1, "confidence": 0.95, "presentationPriority": 1, "sectionId": "s_conclusion", "isMainClaim": true } }
+  ],
+  "relations": [
+    { "id": "r_capability_barrier", "source": "p_ai_capability", "target": "p_barrier_down", "family": "CAUSE", "subtype": "decrease", "confidence": 0.9, "sectionId": "s_mechanism" },
+    { "id": "r_barrier_indie", "source": "p_barrier_down", "target": "p_indie_up", "family": "CAUSE", "subtype": "increase", "confidence": 0.85, "sectionId": "s_mechanism" },
+    { "id": "r_experience_rebuttal", "source": "p_complex_requires", "target": "p_engineers_disappear", "family": "OPPOSE", "subtype": "rebuttal", "confidence": 0.9, "sectionId": "s_constraint" },
+    { "id": "r_not_disappear_role", "source": "p_engineers_disappear", "target": "p_role_changes", "family": "INFER", "subtype": "therefore", "confidence": 0.88 }
+  ],
+  "sections": [
+    { "id": "s_mechanism", "title": "门槛下降", "summary": "AI 能力提高降低编程门槛，并使独立开发更普遍。", "propositionIds": ["p_ai_capability", "p_barrier_down", "p_indie_up"] },
+    { "id": "s_constraint", "title": "工程约束仍然存在", "summary": "复杂软件仍依赖工程判断。", "propositionIds": ["p_complex_requires", "p_engineers_disappear"] },
+    { "id": "s_conclusion", "title": "角色改变", "summary": "结论是角色变化而非职业消失。", "propositionIds": ["p_engineers_disappear", "p_role_changes"] }
+  ],
+  "globalClaimIds": ["p_role_changes"],
+  "presentation": { "pinnedPropositionIds": ["p_role_changes"], "hiddenSceneIds": [], "sceneOrder": [] }
+}
+

@@ -1,0 +1,12 @@
+{
+  "name": "viewpoint-compiler-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["plugins/*"],
+  "scripts": {
+    "build": "npm run build --workspace viewpoint-compiler",
+    "test": "npm run test --workspace viewpoint-compiler",
+    "typecheck": "npm run typecheck --workspace viewpoint-compiler"
+  }
+}
+

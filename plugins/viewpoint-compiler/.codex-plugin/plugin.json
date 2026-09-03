@@ -1,0 +1,24 @@
+{
+  "name": "viewpoint-compiler",
+  "version": "0.1.0",
+  "description": "Compile natural-language viewpoints into editable reasoning graphs and deterministic HTML animations.",
+  "author": {
+    "name": "Viewpoint Compiler"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Viewpoint Compiler",
+    "shortDescription": "Turn ideas into editable reasoning animations.",
+    "longDescription": "Parses viewpoints into a versioned reasoning IR, optimizes them into cognitive scenes, and renders an editable animated SVG experience without requiring an API key.",
+    "developerName": "Viewpoint Compiler",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "brandColor": "#6D5EF7",
+    "defaultPrompt": [
+      "把这段观点编译成可编辑的推理动画。",
+      "Visualize this argument as a reasoning animation.",
+      "打开我最近的 Viewpoint Compiler 项目。"
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}
